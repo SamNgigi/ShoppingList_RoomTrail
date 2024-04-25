@@ -21,7 +21,7 @@ abstract class ShoppingListDB: RoomDatabase() {
     abstract fun itemDao(): ItemDao
     abstract fun storeDao(): StoreDao
 
-    companion object {
+    /*companion object {
         @Volatile
         var INSTANCE: ShoppingListDB? = null
         fun getDatabase(context: Context): ShoppingListDB{
@@ -35,6 +35,6 @@ abstract class ShoppingListDB: RoomDatabase() {
                 return instance
             }
         }
-    }
+    }*/
 
 }

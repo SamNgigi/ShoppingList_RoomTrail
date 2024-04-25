@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -47,7 +48,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "**/*"
         }
     }
 }
@@ -74,6 +75,7 @@ dependencies {
 
     // Navigation Compose
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
     // Compose ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     // ROOM
@@ -81,8 +83,10 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
+
+
     // To use Kotlin Symbol Processing
-    ksp("androidx.room:room-compiler:$roomVersion")
+     ksp("androidx.room:room-compiler:$roomVersion")
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
@@ -94,9 +98,13 @@ dependencies {
     implementation("androidx.room:room-paging:$roomVersion")
 
 
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.49")
+    implementation("com.google.dagger:hilt-android-compiler:2.49")
+    ksp("com.google.dagger:dagger-compiler:2.49")
+    ksp("com.google.dagger:hilt-android-compiler:2.49")
 
-
-
-
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 }
+

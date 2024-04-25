@@ -14,7 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.hai.shoppinglist_roomtrail.ui.ShoppingList_RoomTrailNavigation
 import com.hai.shoppinglist_roomtrail.ui.home.HomeScreen
 import com.hai.shoppinglist_roomtrail.ui.theme.ShoppingList_RoomTrailTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

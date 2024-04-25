@@ -3,25 +3,29 @@ package com.hai.shoppinglist_roomtrail.ui.detail
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.hai.shoppinglist_roomtrail.Graph
 import com.hai.shoppinglist_roomtrail.data.room.model.Item
 import com.hai.shoppinglist_roomtrail.data.room.model.ShoppingList
 import com.hai.shoppinglist_roomtrail.data.room.model.Store
 import com.hai.shoppinglist_roomtrail.domain.repository.Repository
 import com.hai.shoppinglist_roomtrail.ui.Category
 import com.hai.shoppinglist_roomtrail.ui.Utils
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Date
+import javax.inject.Inject
 
-class DetailViewModel
+@HiltViewModel
+class DetailViewModel @Inject
     constructor(
-        private val itemId: Int,
-        private val repository: Repository = Graph.repository
+       private val savedStateHandle: SavedStateHandle,
+        private val repository: Repository
 ): ViewModel() {
+    // Needs to have the same name as the navigation variable
+    private val itemId: Int = savedStateHandle["id"] ?: -1
     var state by mutableStateOf(DetailState())
         private set
     init {
@@ -31,7 +35,7 @@ class DetailViewModel
             viewModelScope.launch {
                 repository
                     .getItemByIdWithListAndStore(itemId)
-                    .collectLatest {
+                    .collectLatest {it ->
                         state = state.copy(
                             itemName = it.item.itemName,
                             storeName = it.store.storeName,
@@ -151,9 +155,10 @@ data class DetailState(
     val category: Category = Category()
 )
 
+/*
 @Suppress("UNCHECKED_CAST")
 class DetailViewModelFactory(private val id: Int): ViewModelProvider.Factory{
     override fun <T: ViewModel> create(modelClass: Class<T>):T{
         return DetailViewModel(itemId = id) as T
     }
-}
+}*/

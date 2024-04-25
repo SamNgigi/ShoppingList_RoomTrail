@@ -5,13 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hai.shoppinglist_roomtrail.Graph
 import com.hai.shoppinglist_roomtrail.data.room.ItemsWithListAndStore
 import com.hai.shoppinglist_roomtrail.data.room.model.Item
 import com.hai.shoppinglist_roomtrail.domain.repository.Repository
 import com.hai.shoppinglist_roomtrail.ui.Category
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 data class HomeState(
@@ -20,8 +21,9 @@ data class HomeState(
     val itemChecked: Boolean = false
 )
 
-class HomeViewModel(
-    private val repository: Repository = Graph.repository
+@HiltViewModel
+class HomeViewModel @Inject constructor (
+    private val repository: Repository
 ): ViewModel(){
     var state by mutableStateOf(HomeState())
         private set
@@ -69,10 +71,5 @@ class HomeViewModel(
             )
         }
     }
-
-
-
-
-
 
 }

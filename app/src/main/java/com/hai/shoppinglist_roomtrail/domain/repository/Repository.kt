@@ -6,8 +6,9 @@ import com.hai.shoppinglist_roomtrail.data.room.StoreDao
 import com.hai.shoppinglist_roomtrail.data.room.model.Item
 import com.hai.shoppinglist_roomtrail.data.room.model.ShoppingList
 import com.hai.shoppinglist_roomtrail.data.room.model.Store
+import javax.inject.Inject
 
-class Repository(
+class Repository @Inject constructor(
     private val shoppingListDao: ShoppingListDao,
     private val storeDao: StoreDao,
     private val itemDao: ItemDao

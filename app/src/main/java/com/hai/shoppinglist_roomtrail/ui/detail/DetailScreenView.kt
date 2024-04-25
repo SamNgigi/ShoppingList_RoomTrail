@@ -4,7 +4,6 @@ package com.hai.shoppinglist_roomtrail.ui.detail
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.graphics.drawable.shapes.Shape
 import android.widget.DatePicker
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,7 +42,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.hai.shoppinglist_roomtrail.ui.Category
 import com.hai.shoppinglist_roomtrail.ui.Utils
 import com.hai.shoppinglist_roomtrail.ui.home.CategoryItem
@@ -57,7 +56,8 @@ fun DetailScreenView(
   id: Int,
   navigateUp: () -> Unit
 ){
-    val viewModel = viewModel<DetailViewModel>(factory = DetailViewModelFactory(id))
+    // val viewModel = viewModel<DetailViewModel>(factory = DetailViewModelFactory(id))
+    val viewModel: DetailViewModel = hiltViewModel()
     Scaffold { innerPadding ->
         DetailEntry(
             modifier = Modifier.padding(innerPadding),

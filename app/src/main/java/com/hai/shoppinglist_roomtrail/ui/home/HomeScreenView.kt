@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hai.shoppinglist_roomtrail.data.room.ItemsWithListAndStore
 import com.hai.shoppinglist_roomtrail.data.room.model.Item
@@ -61,7 +62,7 @@ import java.util.Locale
 fun HomeScreen(
     onNavigate: (Int) -> Unit
 ){
-    val homeViewModel = viewModel(modelClass = HomeViewModel::class.java)
+    val homeViewModel: HomeViewModel = hiltViewModel()
     val homeState = homeViewModel.state
 
     Scaffold(
@@ -162,7 +163,7 @@ fun CategoryItem(
             Spacer(modifier = Modifier.size(8.dp))
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Medium
 
             )

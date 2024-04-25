@@ -1,10 +1,7 @@
 package com.hai.shoppinglist_roomtrail
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class ShoppingList_RoomTrail: Application() {
-    override fun onCreate() {
-        super.onCreate()
-        Graph.provide(this)
-    }
-}
+@HiltAndroidApp
+class ShoppingList_RoomTrail: Application()

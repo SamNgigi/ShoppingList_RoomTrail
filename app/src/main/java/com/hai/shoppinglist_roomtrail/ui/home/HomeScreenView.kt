@@ -116,11 +116,9 @@ fun HomeScreen(
                         ){
                             onNavigate.invoke(it.item.id)
                         }
-                    }
+                    },
                 )
             }
-
-
         }
 
     }
@@ -164,7 +162,7 @@ fun CategoryItem(
             Spacer(modifier = Modifier.size(8.dp))
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Medium
 
             )

@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.hai.shoppinglist_roomtrail.ui.ShoppingList_RoomTrailNavigation
 import com.hai.shoppinglist_roomtrail.ui.home.HomeScreen
 import com.hai.shoppinglist_roomtrail.ui.theme.ShoppingList_RoomTrailTheme
 
@@ -24,11 +25,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen(onNavigate = {})
+                    ShoppingListApp()
                 }
             }
         }
     }
+}
+@Composable
+fun ShoppingListApp(){
+    ShoppingList_RoomTrailNavigation()
 }
 
 @Composable
